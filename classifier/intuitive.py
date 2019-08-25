@@ -1,4 +1,6 @@
 """Intuitive Classifier."""
+from skimage import io
+
 import numpy as np
 
 
@@ -37,7 +39,7 @@ def intuitive_classifier(img):
         for column in range(0, columns, 100):
             if no_classes == 0:
                 class_name = 'class{}'.format(no_classes)
-                classes[class_name] = img[row, column]
+                classes[class_name] = [img[row, column], [img[row, column]]]
                 no_classes += 1
             else:
                 center_distances = [
