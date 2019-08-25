@@ -1,5 +1,5 @@
 """Script to test Mahalanobis distance."""
-from skimage import data, io
+from skimage import data
 
 import numpy as np
 

@@ -1,6 +1,4 @@
 """Intuitive Classifier."""
-from skimage import io
-
 import numpy as np
 
 
@@ -44,16 +42,17 @@ def intuitive_classifier(img):
             else:
                 center_distances = [
                     euclidian_distance(
-                        img[row, column], classes[img_class]
+                        img[row, column], classes[img_class][0]
                     ) for img_class in classes
                 ]
                 center_distances = np.array(center_distances)
                 min_value = np.amin(center_distances)
                 if min_value > tolerance:
                     class_name = 'class{}'.format(no_classes)
-                    classes[class_name] = img[row, column]
+                    classes[class_name] = [
+                        img[row, column], [img[row, column]]
+                    ]
                     no_classes += 1
-                    pass
                 else:
                     class_possition = np.where(
                         center_distances == min_value
@@ -61,7 +60,14 @@ def intuitive_classifier(img):
                     class_name = 'class{}'.format(class_possition)
                     updated_center = update_center(
                         img[row, column],
-                        classes[class_name]
+                        classes[class_name][0]
                     )
-                    classes[class_name] = updated_center
+                    classes[class_name][0] = updated_center
+                    classes[class_name][1].append(img[row, column])
+    """
+    The return gonna be a dictionary with the next structure:
+        classes = {
+            "class0": [pixel_center, [pixel1, pixel2, pixeln]],
+            "classn": [pixel_center, [pixel1, pixel2, pixeln]],
+        }."""
     return classes

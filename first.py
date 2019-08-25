@@ -14,7 +14,7 @@ image = io.imread('optimized.JPG')
 
 classes = intuitive_classifier(image)
 
-centers = [classes[img_class] for img_class in classes]
+centers = [classes[img_class][0] for img_class in classes]
 
 salida = np.zeros([rows, columns], dtype=np.uint8())
 
