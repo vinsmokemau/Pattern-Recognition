@@ -31,10 +31,10 @@ def intuitive_classifier(img):
 
     classes = {}
     no_classes = 0
-    tolerance = 50
+    tolerance = 35
 
-    for row in range(0, rows, 100):
-        for column in range(0, columns, 100):
+    for row in range(0, rows, 50):
+        for column in range(0, columns, 50):
             if no_classes == 0:
                 class_name = 'class{}'.format(no_classes)
                 classes[class_name] = [img[row, column], [img[row, column]]]

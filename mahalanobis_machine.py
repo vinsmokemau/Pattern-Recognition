@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 from distances.distances import mahalanobis_distance
 
-image = io.imread('optimized.JPG')
+image = io.imread('img1_opt.jpg')
 
 [rows, columns, layers] = image.shape
 

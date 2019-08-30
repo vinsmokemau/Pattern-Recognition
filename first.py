@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 from classifier.intuitive import intuitive_classifier
 
-image = io.imread('optimized.JPG')
+image = io.imread('img1_opt.jpg')
 
 [rows, columns, layers] = image.shape
 
