@@ -18,13 +18,15 @@ neighbors = []
 k = 3
 
 for img_class in classes:
-    if len(classes[img_class][1]) >= k:
+    if len(classes[img_class][1]) >= k - 1:
         for neighbor in classes[img_class][1]:
             neighbors.append((neighbor, img_class))
 
 out = np.zeros([rows, columns], dtype=np.uint8())
 
 scales = [i for i in range(0, 256, (256 // len(classes)))]
+
+image = io.imread('img2_opt.jpg')
 
 for row in range(rows):
     for column in range(columns):

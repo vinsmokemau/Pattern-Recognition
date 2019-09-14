@@ -11,15 +11,17 @@ from distances.distances import euclidian_distance
 
 image = io.imread('img1_opt.jpg')
 
-[rows, columns, layers] = image.shape
-
 classes = intuitive_classifier(image)
 
 centers = [classes[img_class][0] for img_class in classes]
 
-salida = np.zeros([rows, columns], dtype=np.uint8())
-
 scales = [i for i in range(0, 256, (256 // len(centers)))]
+
+image = io.imread('img3_opt.jpg')
+
+[rows, columns, layers] = image.shape
+
+salida = np.zeros([rows, columns], dtype=np.uint8())
 
 for row in range(rows):
     for column in range(columns):

@@ -9,8 +9,6 @@ from distances.distances import mahalanobis_distance
 
 image = io.imread('img1_opt.jpg')
 
-[rows, columns, layers] = image.shape
-
 means = []
 covariances = []
 for i in '1234':
@@ -23,9 +21,13 @@ for i in '1234':
     means.append(np.mean(values, axis=0))
     covariances.append(np.cov(values.T, ddof=1))
 
-out = np.zeros([rows, columns], dtype=np.uint8())
-
 scales = [i for i in range(0, 256, (256 // len(means)))]
+
+image = io.imread('img2_opt.jpg')
+
+[rows, columns, layers] = image.shape
+
+out = np.zeros([rows, columns], dtype=np.uint8())
 
 for row in range(rows):
     for column in range(columns):
